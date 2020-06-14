@@ -22,7 +22,7 @@
         </li>
       <% else %>
         <li>
-          <%= link_to 'Meus Ativos', '#' %>
+          <%= link_to 'Meus Ativos', user_path(current_user) %>
         </li>
         <li>
           <%= link_to 'Sair', destroy_user_session_path, :method => :delete  %>

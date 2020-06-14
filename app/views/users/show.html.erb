@@ -1,0 +1,16 @@
+<h4>Olá, <%= @user.email %> </h4>
+
+<h2>Meus ativos</h2>
+
+<% @user_invests.each do |invest| %>
+<div class="container">
+    <br/>
+    <p><strong>Empresa: </strong> <%= invest.name %> </p>
+    <p><strong> Código: </strong> <%= invest.symbol %> </p>
+    <p> <%= invest.price %> </p>
+    <p><strong> 
+        <%= link_to 'Deletar ativo', '#' %>
+    </strong> </p>
+    <br/>
+</div>
+<% end %>

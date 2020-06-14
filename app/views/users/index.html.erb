@@ -1,7 +1,16 @@
-<h1>hello</h1>
+<h2>Sugestões de investimentos</h2>
 
 <% @stocks[0].each do |stock| %>
-    <p> <%= stock.name %> </p>
-    <p> <%= stock.symbol %> </p>
+<div class="container">
+    <br/>
+    <p><strong>Empresa: </strong> <%= stock.name %> </p>
+    <p><strong> Código: </strong> <%= stock.symbol %> </p>
     <p> <%= stock.price %> </p>
+    <% if user_signed_in?%>
+        <p><strong> 
+        <%= link_to 'Salvar investimento', user_invests_path(current_user.id, invest: {name: stock.name, symbol: stock.symbol, price: stock.price}), method: :post %>
+        </strong> </p>
+    <% end %>
+    <br/>
+</div>
 <% end %>

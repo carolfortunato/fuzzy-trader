@@ -5,8 +5,8 @@ class Worldtradingdata::Request
             status == 200 ? response : errors(response)
         end
 
-        def get(id)
-            response, status = get_json(id)
+        def get(search)
+            response, status = get_json(search)
             status == 200 ? response : errors(response)
         end
 
