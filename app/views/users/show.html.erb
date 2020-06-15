@@ -1,16 +1,25 @@
-<h4>Olá, <%= @user.email %> </h4>
+<% if user_signed_in? %>
 
-<h2>Meus ativos</h2>
+    <h4>Olá, <%= @user.email %> </h4>
 
-<% @user_invests.each do |invest| %>
-<div class="container">
-    <br/>
-    <p><strong>Empresa: </strong> <%= invest.name %> </p>
-    <p><strong> Código: </strong> <%= invest.symbol %> </p>
-    <p> <%= invest.price %> </p>
-    <p><strong> 
-        <%= link_to 'Deletar ativo', '#' %>
-    </strong> </p>
-    <br/>
-</div>
-<% end %>
+    <h2>Meus ativos</h2>
+
+    <% if @user_invests.empty?%>
+        <h5>Ainda não há investimentos em sua carteira</h5>
+    <% else%>
+        <% @user_invests.each do |invest| %>
+        <div class="container">
+            <br/>
+            <p><strong> Código: </strong> <%= invest.symbol %> </p>
+            <p><strong>Empresa: </strong> <%= invest.name %> </p>
+            <p> <%= invest.price %> </p>
+            <br/>
+        </div>
+        <% end %>
+    <% end %>
+
+<% end%>
+
+<% if !user_signed_in? %>
+    <% redirect_to root_path %>
+<% end%>
